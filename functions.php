@@ -18,31 +18,28 @@ function check_php_version($preset_version) {
     return version_compare($current_version, $preset_version, '>=') ? true : false;
 }
 
-//Option-Framework
-
+// Option Framework
 require get_template_directory() . '/opt/option-framework.php';
 
 if (!function_exists('iro_opt')) {
-    $GLOBALS['iro_options'] = get_option('iro_options');
     function iro_opt($option = '', $default = null)
     {
-        return $GLOBALS['iro_options'][$option] ?? $default;
+        $options = get_option('iro_options', []);
+        return $options[$option] ?? $default;
     }
 }
+
 if (!function_exists('iro_opt_update')) {
     function iro_opt_update($option = '', $value = null)
     {
-        $options = get_option('iro_options'); // 当数据库没有指定项时，WordPress会返回false
-        if($options){
-            $options[$option] = $value;
-        }else{
-            $options = array($option => $value);
-        }
+        $options = get_option('iro_options', []);
+        $options[$option] = $value;
         update_option('iro_options', $options);
     }
 }
-$shared_lib_basepath = iro_opt('shared_library_basepath') ? get_template_directory_uri() : (iro_opt('lib_cdn_path','https://fastly.jsdelivr.net/gh/mirai-mamori/Sakurairo@'). IRO_VERSION);
-$core_lib_basepath =  iro_opt('core_library_basepath') ? get_template_directory_uri() : (iro_opt('lib_cdn_path','https://fastly.jsdelivr.net/gh/mirai-mamori/Sakurairo@'). IRO_VERSION);
+
+$shared_lib_basepath = iro_opt('shared_library_basepath') ? get_template_directory_uri() : (iro_opt('lib_cdn_path', 'https://fastly.jsdelivr.net/gh/mirai-mamori/Sakurairo@') . IRO_VERSION);
+$core_lib_basepath = iro_opt('core_library_basepath') ? get_template_directory_uri() : (iro_opt('lib_cdn_path', 'https://fastly.jsdelivr.net/gh/mirai-mamori/Sakurairo@') . IRO_VERSION);
 
 /**
  * composer autoload
@@ -51,27 +48,34 @@ if ((check_php_version('7.4.0')) && iro_opt('composer_load')) {
     require_once 'vendor/autoload.php';
 }
 
-//Update-Checker
-
+// Update-Checker
 require 'update-checker/update-checker.php';
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-function UpdateCheck($url,$flag = 'Sakurairo'){
-    return PucFactory::buildUpdateChecker(
-        $url,
-        __FILE__,
-        $flag
-    );
+
+function setup_theme_update_checker() {
+    $update_source = iro_opt('iro_update_source');
+    $url = '';
+
+    switch ($update_source) {
+        case 'github':
+            $url = 'https://github.com/mirai-mamori/Sakurairo';
+            break;
+        case 'upyun':
+            $url = 'https://update.maho.cc/jsdelivr.json';
+            break;
+        case 'official_building':
+            $channel = iro_opt('iro_update_channel');
+            $url = "https://update.maho.cc/{$channel}/check.json";
+            break;
+    }
+
+    if ($url && check_php_version('7.4.0') && iro_opt('composer_load')) {
+        PucFactory::buildUpdateChecker($url, __FILE__, 'Sakurairo');
+    }
 }
-switch(iro_opt('iro_update_source')){
-    case 'github':
-        $iroThemeUpdateChecker = UpdateCheck('https://github.com/mirai-mamori/Sakurairo','Sakurairo');
-        break;
-    case 'upyun':
-        $iroThemeUpdateChecker = UpdateCheck('https://update.maho.cc/jsdelivr.json');
-        break;
-    case 'official_building':
-        $iroThemeUpdateChecker = UpdateCheck('https://update.maho.cc/'.iro_opt('iro_update_channel').'/check.json');
-}
+
+add_action('after_setup_theme', 'setup_theme_update_checker');
+
 //ini_set('display_errors', true);
 //error_reporting(E_ALL);
 error_reporting(E_ALL & ~E_NOTICE);
@@ -296,35 +300,41 @@ function sakura_scripts()
         wp_enqueue_script('comment-reply');
     }
     //前端脚本本地化
-    if (get_locale() != 'zh_CN') {
-        wp_localize_script('app', '_sakurairoi18n', array(
-            '复制成功！' => __("Copied!", 'sakurairo'),
-            '拷贝代码' => __("Copy Code", 'sakurairo'),
-            '你的封面API好像不支持跨域调用,这种情况下缓存是不会生效的哦' => __("Your cover API seems to not support Cross Origin Access. In this case, Cover Cache won't take effect.", 'sakurairo'),
-            '提交中....' => __('Commiting....', 'sakurairo'),
-            '提交成功' => __('Succeed', 'sakurairo'),
-            '每次上传上限为10张' => __('10 files max per request', 'sakurairo'),
-            "图片上传大小限制为5 MB\n\n「{0}」\n\n这张图太大啦~请重新上传噢！" => __("5 MB max per file.\n\n「{0}」\n\nThis image is too large~Please reupload!", 'sakurairo'),
-            '上传中...' => __('Uploading...', 'sakurairo'),
-            '图片上传成功~' => __('Uploaded successfully~', 'sakurairo'),
-            "上传失败！\n文件名=> {0}\ncode=> {1}\n{2}" => __("Upload failed!\nFile Name=> {0}\ncode=> {1}\n{2}", 'sakurairo'),
-            '上传失败，请重试.' => __('Upload failed, please retry.', 'sakurairo'),
-            '页面加载出错了 HTTP {0}' => __("Page Load failed. HTTP {0}", 'sakurairo'),
-            '很高兴你翻到这里，但是真的没有了...' => __("Glad you come, but we've got nothing left.", 'sakurairo'),
-            "文章" => __("Post", 'sakurairo'),
-            "标签" => __("Tag", 'sakurairo'),
-            "分类" => __("Category", 'sakurairo'),
-            "页面" => __("Page", 'sakurairo'),
-            "评论" => __("Comment", 'sakurairo'),
-            "已暂停..." => __("Paused...", 'sakurairo'),
-            "正在载入视频 ..." => __("Loading Video...", 'sakurairo'),
-            "将从网络加载字体，流量请注意" => __("Downloading fonts, be aware of your data usage.", 'sakurairo'),
-            "您真的要设为私密吗？" => __("Are you sure you want set it private?", 'sakurairo'),
-            "您之前已设过私密评论" => __("You had set private comment before", 'sakurairo')
-        ));
+    function localize_common_texts() {
+        return array(
+            'copied' => __("Copied!", 'sakurairo'),
+            'copy_code' => __("Copy Code", 'sakurairo'),
+            'cross_origin_warning' => __("Your cover API seems to not support Cross Origin Access. In this case, Cover Cache won't take effect.", 'sakurairo'),
+            'committing' => __('Commiting....', 'sakurairo'),
+            'commit_success' => __('Succeed', 'sakurairo'),
+            'upload_limit' => __('10 files max per request', 'sakurairo'),
+            'file_size_limit' => __("5 MB max per file.\n\n「{0}」\n\nThis image is too large~Please reupload!", 'sakurairo'),
+            'uploading' => __('Uploading...', 'sakurairo'),
+            'upload_success' => __('Uploaded successfully~', 'sakurairo'),
+            'upload_failed' => __("Upload failed!\nFile Name=> {0}\ncode=> {1}\n{2}", 'sakurairo'),
+            'retry_upload' => __('Upload failed, please retry.', 'sakurairo'),
+            'page_load_failed' => __("Page Load failed. HTTP {0}", 'sakurairo'),
+            'nothing_left' => __("Glad you come, but we've got nothing left.", 'sakurairo'),
+            'post' => __("Post", 'sakurairo'),
+            'tag' => __("Tag", 'sakurairo'),
+            'category' => __("Category", 'sakurairo'),
+            'page' => __("Page", 'sakurairo'),
+            'comment' => __("Comment", 'sakurairo'),
+            'paused' => __("Paused...", 'sakurairo'),
+            'loading_video' => __("Loading Video...", 'sakurairo'),
+            'downloading_fonts' => __("Downloading fonts, be aware of your data usage.", 'sakurairo'),
+            'set_private_confirm' => __("Are you sure you want set it private?", 'sakurairo'),
+            'private_comment_before' => __("You had set private comment before", 'sakurairo')
+        );
     }
-}
-add_action('wp_enqueue_scripts', 'sakura_scripts');
+    
+    function sakura_scripts() {
+        if (get_locale() != 'zh_CN') {
+            wp_localize_script('app', '_sakurairoi18n', localize_common_texts());
+        }
+    }
+    add_action('wp_enqueue_scripts', 'sakura_scripts');
+    
 
 /**
  * load .php.
@@ -350,29 +360,49 @@ require get_template_directory() . '/inc/theme_plus.php';
 require get_template_directory() . '/inc/categories-images.php';
 
 //Comment Location Start
-function convertip($ip)
-{
-    if (empty($ip)) $ip = get_comment_author_IP();
-    $ch = curl_init();
-    $url = 'https://api.nmxc.ltd/ip/' . $ip;
-    $timeout = 5;
-    curl_setopt($ch, CURLOPT_URL, $url);
-    // curl_setopt ($ch, CURLOPT_URL, 'http://ip.taobao.com/outGetIpInfo?accessKey=alibaba-inc&ip='.$ip);  
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    $file_contents = curl_exec($ch);
-    curl_close($ch);
-    $result = null;
-    $result = json_decode($file_contents, true);
-    if ($result && $result['code'] != 0) {
-        return "未知";
+function get_comment_author_location($ip = null) {
+    if (empty($ip)) {
+        $ip = get_comment_author_IP();
     }
-    if ($result['data']['country'] != '中国') {
-        return $result['data']['country'];
+
+    // Check if location is already cached
+    $cache_key = 'comment_location_' . md5($ip);
+    $location = get_transient($cache_key);
+    if ($location !== false) {
+        return $location;
     }
-    return $result['data']['country'] . '&nbsp;·&nbsp;' . $result['data']['region'] . '&nbsp;·&nbsp;' . $result['data']['city'];
+
+    $api_url = 'https://api.nmxc.ltd/ip/' . $ip;
+    $response = wp_remote_get($api_url);
+
+    if (is_wp_error($response)) {
+        return '获取位置信息失败';
+    }
+
+    $body = wp_remote_retrieve_body($response);
+    $data = json_decode($body, true);
+
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        return '解析位置信息失败';
+    }
+
+    if ($data['code'] !== 0) {
+        return '未知';
+    }
+
+    $location = $data['data']['country'];
+    if ($location !== '中国') {
+        $location = $data['data']['country'];
+    } else {
+        $location = $data['data']['country'] . ' · ' . $data['data']['region'] . ' · ' . $data['data']['city'];
+    }
+
+    // Cache the location for 24 hours
+    set_transient($cache_key, $location, 24 * HOUR_IN_SECONDS);
+
+    return $location;
 }
+
 //Comment Location End
 
 if (!function_exists('akina_comment_format')) {
@@ -580,35 +610,49 @@ if (iro_opt('gravatar_proxy')) {
 /*
  * 检查主题版本号，并在更新主题后执行设置选项值的更新
  */
-function visual_resource_updates($specified_version, $option_name, $new_value) {
+/**
+ * 更新选项值
+ *
+ * @param string $option_name 选项名称
+ * @param string $new_value 新值
+ */
+function update_option_value($option_name, $new_value) {
+    $option_value = iro_opt($option_name);
+    if (empty($option_value)) {
+        $option_value = "https://s.nmxc.ltd/sakurairo_vision/@2.6/";
+    } else if (strpos($option_value, '@') === false || substr($option_value, strpos($option_value, '@') + 1) !== $new_value) {
+        $option_value = preg_replace('/@.*/', '@' . $new_value, $option_value);
+    }
+    iro_opt_update($option_name, $option_value);
+}
+
+/**
+ * 检查主题版本并更新选项值
+ *
+ * @param string $specified_version 指定版本号
+ * @param string $option_name 选项名称
+ * @param string $new_value 新值
+ */
+function check_theme_version_and_update($specified_version, $option_name, $new_value) {
     $theme = wp_get_theme();
     $current_version = $theme->get('Version');
 
     // Check if the function has already been triggered
-    $function_triggered = get_transient('visual_resource_updates_triggered18');
+    $function_triggered = get_transient('theme_version_update_triggered');
     if ($function_triggered) {
         return; // Function has already been triggered, do nothing
     }
 
     if (version_compare($current_version, $specified_version, '>')) {
-        $option_value = iro_opt($option_name);
-        if (empty($option_value)) {
-            $option_value = "https://s.nmxc.ltd/sakurairo_vision/@2.6/";
-        } else if (strpos($option_value, '@') === false || substr($option_value, strpos($option_value, '@') + 1) !== $new_value) {
-            $option_value = preg_replace('/@.*/', '@' . $new_value, $option_value);
-        }
-        iro_opt_update($option_name, $option_value);
-        
+        update_option_value($option_name, $new_value);
+
         // Set transient to indicate that the function has been triggered
-        set_transient('visual_resource_updates_triggered18', true);
+        set_transient('theme_version_update_triggered', true);
     }
 }
 
-visual_resource_updates('2.5.6', 'vision_resource_basepath', '2.6/');
+check_theme_version_and_update('2.5.6', 'vision_resource_basepath', '2.6/');
 
-function gfonts_updates($specified_version, $option_name) {
-    $theme = wp_get_theme();
-    $current_version = $theme->get('Version');
 
     // Check if the function has already been triggered
     $function_triggered = get_transient('gfonts_updates_triggered18');
