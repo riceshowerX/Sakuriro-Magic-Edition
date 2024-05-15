@@ -1,0 +1,885 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Sakurairo\n"
+"POT-Creation-Date: 2023-06-05 13:20+0800\n"
+"PO-Revision-Date: 2023-06-05 13:20+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.3.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: 404.php:53
+msgid "return to previous page"
+msgstr "前のページに戻る"
+
+#: 404.php:54
+msgid "return to home page"
+msgstr "ホームページに戻る"
+
+#: 404.php:57
+msgid "Don't worry, search in site?"
+msgstr "心配しないで、サイト内検索はどうでしょうか?"
+
+#: 404.php:59 footer.php:63 search.php:39
+msgid "Search..."
+msgstr "検索…"
+
+#: archive.php:58 author.php:79 index.php:74
+msgid " Previous"
+msgstr " 前へ"
+
+#: author.php:12
+msgid "No personal profile set yet"
+msgstr "個人プロファイルはまだ設定されていません"
+
+#: comments.php:20
+msgid "view comments"
+msgstr "コメントを表示する"
+
+#: comments.php:21 comments.php:25
+msgid " comment"
+msgstr " コメント"
+
+#: comments.php:21 comments.php:25
+msgid " comments"
+msgstr " コメント"
+
+#: comments.php:46
+msgid "no comment"
+msgstr "コメントはありません"
+
+#: comments.php:57
+msgid "I'm not a robot"
+msgstr "私はロボットではありません"
+
+#: comments.php:58
+msgid "Comment in private"
+msgstr "プライベートでコメント"
+
+#: comments.php:59
+msgid "Comment reply notify"
+msgstr "コメント返信通知"
+
+#: comments.php:67
+msgid "Leave a Reply to"
+msgstr "返信を残す"
+
+#: comments.php:68
+msgid "Cancel Reply"
+msgstr "返信をキャンセル"
+
+#: comments.php:69
+msgid "BiuBiuBiu~"
+msgstr "BiuBiuBiu~"
+
+#: comments.php:70
+msgid "You are a surprise that I will only meet once in my life"
+msgstr "あなたは私が私の人生で一度だけ会う驚きです"
+
+#: comments.php:74
+msgid "Click me OωO"
+msgstr "Click me OωO"
+
+#: comments.php:75
+msgid "Woooooow ヾ(≧∇≦*)ゝ"
+msgstr "うわーうわーヾ(≧∇≦*)ゝ"
+
+#: comments.php:96
+msgid "Auto pull nickname and avatar with a QQ num. entered"
+msgstr "QQ 番号が入力された自動プルニックネームとアバター"
+
+#: comments.php:96
+msgid "Nickname or QQ number"
+msgstr "ニックネームまたは QQ 番号"
+
+#: comments.php:96
+msgid "Name* "
+msgstr "サイト名 "
+
+#: comments.php:98
+msgid "You will receive notification by email"
+msgstr "メールで通知を受け取ります"
+
+#: comments.php:98
+msgid "email"
+msgstr "メールアドレス"
+
+#: comments.php:98
+msgid "Must* "
+msgstr "必須* "
+
+#: comments.php:100
+msgid "Advertisement is forbidden 😀"
+msgstr "広告は禁止されています"
+
+#: comments.php:100
+msgid "Site"
+msgstr "サイト"
+
+#: footer.php:38
+#, php-format
+msgctxt "footer load occupancy"
+msgid "Load Time %.3f seconds | %d Query | RAM Usage %.2f MB "
+msgstr "ロード時間 %.3f 秒 | %d クエリ | RAM 使用量  %.2f MB "
+
+#: footer.php:68
+msgid "Go to top"
+msgstr "このページのトップへ"
+
+#: footer.php:69
+msgid "Control Panel"
+msgstr "コントロールパネル"
+
+#: footer.php:75 footer.php:83
+msgid "Want to find something?"
+msgstr "何かを見つけたいですか?"
+
+#: footer.php:84
+msgid "Search"
+msgstr "検索"
+
+#: footer.php:120
+msgid "Light Mode"
+msgstr "ライトフィルター"
+
+#: footer.php:123
+msgid "Dark Mode"
+msgstr "ダークモード"
+
+#: footer.php:129
+msgid "Toggle Page Background Image"
+msgstr "検索エリア背景画像"
+
+#: footer.php:150
+msgid "Switch To Font A"
+msgstr "フォントAに切り替え"
+
+#: footer.php:153
+msgid "Switch To Font B"
+msgstr "フォントBに切り替え"
+
+#: functions.php:97
+msgid "Nav Menus"
+msgstr "メニュー"
+
+#: functions.php:213 functions.php:224
+msgid "Ideas"
+msgstr "アイデア"
+
+#: functions.php:214
+msgid "Idea"
+msgstr "アイデア"
+
+#: functions.php:215 functions.php:216
+msgid "Publish New Idea"
+msgstr "新規追加"
+
+#: functions.php:217
+msgid "Edit Idea"
+msgstr "%sを編集"
+
+#: functions.php:218
+msgid "New Idea"
+msgstr "新しいアイデア"
+
+#: functions.php:219
+msgid "View Idea"
+msgstr "表示"
+
+#: functions.php:220
+msgid "Search Idea"
+msgstr "検索"
+
+#: functions.php:221
+msgid "Not Found Idea"
+msgstr "アイデアが見つかりません"
+
+#: functions.php:222
+msgid "No Idea in the Trash"
+msgstr "ゴミ箱の中には何もない"
+
+#: functions.php:297
+msgid "Copied!"
+msgstr "コピーしました!"
+
+#: functions.php:298
+msgid "Copy Code"
+msgstr "コードをコピー"
+
+#: functions.php:299
+msgid ""
+"Your cover API seems to not support Cross Origin Access. In this case, Cover "
+"Cache won't take effect."
+msgstr ""
+"あなたのカバー API はクロスオリジンアクセスをサポートしていないようです。この"
+"場合、Cover Cacheは有効になりません。"
+
+#: functions.php:300
+msgid "Commiting...."
+msgstr "提出中…."
+
+#: functions.php:301
+msgid "Succeed"
+msgstr "継ぐ"
+
+#: functions.php:302
+msgid "10 files max per request"
+msgstr "1回のリクエストで送信できるファイル数の上限は10個です"
+
+#: functions.php:303
+msgid ""
+"5 MB max per file.\n"
+"\n"
+"「{0}」\n"
+"\n"
+"This image is too large~Please reupload!"
+msgstr ""
+"1ファイルの最大サイズは 5 MB です。\n"
+"\n"
+"「{0}」\n"
+"\n"
+"この画像が大きすぎる~再アップロードしてください!"
+
+#: functions.php:304
+msgid "Uploading..."
+msgstr "アップロード中..."
+
+#: functions.php:305
+msgid "Uploaded successfully~"
+msgstr "アップロードに成功しました~"
+
+#: functions.php:306
+msgid ""
+"Upload failed!\n"
+"File Name=> {0}\n"
+"code=> {1}\n"
+"{2}"
+msgstr ""
+"アップロードに失敗しました!\n"
+"ファイル名=> {0}\n"
+"コード=> {1}\n"
+"{2}"
+
+#: functions.php:307
+msgid "Upload failed, please retry."
+msgstr "アップロードに失敗しました、もう一度やり直してください。"
+
+#: functions.php:308
+msgid "Page Load failed. HTTP {0}"
+msgstr "ページの読み込みに失敗しました。HTTP {0}"
+
+#: functions.php:309
+msgid "Glad you come, but we've got nothing left."
+msgstr "あなたが来てうれしいですが、私たちは何も残っていません。"
+
+#: functions.php:310
+msgid "Post"
+msgstr "投稿"
+
+#: functions.php:311
+msgid "Tag"
+msgstr "タグ"
+
+#: functions.php:312
+msgid "Category"
+msgstr "カテゴリー"
+
+#: functions.php:313
+msgid "Page"
+msgstr "ページ"
+
+#: functions.php:314
+msgid "Comment"
+msgstr "コメント"
+
+#: functions.php:315
+msgid "Paused..."
+msgstr "一時 停止。。。"
+
+#: functions.php:316
+msgid "Loading Video..."
+msgstr "ビデオを読み込んでいます..."
+
+#: functions.php:317
+msgid "Downloading fonts, be aware of your data usage."
+msgstr "フォントをダウンロードするには、データ使用量に注意してください。"
+
+#: functions.php:318
+msgid "Are you sure you want set it private?"
+msgstr "プライベートに設定してもよろしいですか?"
+
+#: functions.php:319
+msgid "You had set private comment before"
+msgstr "以前にプライベートコメントを設定していた"
+
+#: functions.php:389 inc/theme_plus.php:194
+msgid "Author"
+msgstr "投稿者"
+
+#: functions.php:389
+msgid "Blogger"
+msgstr "Blogger"
+
+#: functions.php:395
+msgid "Location"
+msgstr "場所"
+
+#: functions.php:401
+msgid "Private"
+msgstr "プライベート"
+
+#: functions.php:403
+msgid "Yes"
+msgstr "はい"
+
+#: functions.php:405
+msgid "No"
+msgstr "いいえ"
+
+#: functions.php:408
+msgid "Edit"
+msgstr "編集"
+
+#: functions.php:526
+msgid "This guy is so lazy ╮(╯▽╰)╭"
+msgstr "こやつはとても怠惰な╮(╯▽╰)╭"
+
+#: functions.php:771
+msgid "Download Link"
+msgstr "ダウンロードリンク"
+
+#: functions.php:844
+msgid "Remember me"
+msgstr "ログイン状態を保存する"
+
+#: functions.php:1265
+msgid "All expand/collapse"
+msgstr "すべての展開/折りたたみ"
+
+#: functions.php:1298
+msgid " "
+msgstr " "
+
+#: functions.php:1302
+msgid " post(s)"
+msgstr " 記事"
+
+#: functions.php:1330 functions.php:1333 inc/theme_plus.php:427
+msgid "Dashboard"
+msgstr "ダッシュボード"
+
+#: functions.php:1638
+msgid "<b>ERROR</b>: This email domain (<b>@"
+msgstr "<b>エラー</b>: このメールドメイン (<b>@"
+
+#: functions.php:1763
+msgid "QQ"
+msgstr "QQ"
+
+#: functions.php:1847
+msgid "Sidebar"
+msgstr "サイドバー"
+
+#: functions.php:1976
+msgid ""
+"<b> For a better experience, please do not set <a href=\"/wp-admin/options-"
+"permalink.php\"> permalink </a> as plain. To do this, you may need to "
+"configure <a href=\"https://www.wpdaxue.com/wordpress-rewriterule.html\" "
+"target=\"_blank\"> pseudo-static </a>. </ b>"
+msgstr ""
+"<b> より良い体験のために、 <a href=\"/wp-admin/options-permalink.php\"> パー"
+"マリンク </a> をプレーンとして設定しないでください。これを行うには、 <a "
+"href=\"https://qiita.com/cyborg__ninja/items/8a191a00d402e78d8823\" "
+"target=\"_blank\"> 擬似静的化 </a>を構成する必要があります。 </b>"
+
+#: functions.php:2106
+msgid "Expand / Collapse"
+msgstr "展開/折りたたみ"
+
+#: inc/categories-images.php:44 inc/categories-images.php:65
+msgid "category/tag image"
+msgstr "カテゴリ/タグ画像"
+
+#: inc/categories-images.php:47 inc/categories-images.php:67
+#: inc/categories-images.php:196
+msgid "add image"
+msgstr "画像を追加する"
+
+#: inc/categories-images.php:68 inc/categories-images.php:197
+msgid "remove image"
+msgstr "画像を削除"
+
+#: inc/categories-images.php:213
+msgid "image"
+msgstr "画像"
+
+#: inc/categories-images.php:222
+msgid "no image"
+msgstr "画像なし"
+
+#: inc/classes/Bilibili.php:48 inc/classes/BilibiliFavList.php:57
+#: inc/classes/BilibiliFavList.php:62 inc/classes/BilibiliFavList.php:74
+#: inc/classes/MyAnimeList.php:57
+msgid "Backend error"
+msgstr "バックエンドエラー"
+
+#: inc/classes/Bilibili.php:53 inc/classes/MyAnimeList.php:69
+msgid "Following "
+msgstr "次 "
+
+#: inc/classes/Bilibili.php:53 inc/classes/MyAnimeList.php:69
+msgid " anime."
+msgstr " アニメ。"
+
+#: inc/classes/Bilibili.php:68
+msgid "The author seems to have hidden their bangumi list."
+msgstr "著者は彼らのバングミリストを隠したようです。"
+
+#: inc/classes/BilibiliFavList.php:90
+msgid "Item count: "
+msgstr "アイテム数: "
+
+#: inc/classes/BilibiliFavList.php:91
+msgid "Expand"
+msgstr "拡張"
+
+#: inc/classes/BilibiliFavList.php:108
+msgid "All item has been loaded."
+msgstr "すべてのアイテムが読み込まれました。"
+
+#: inc/classes/BilibiliFavList.php:130 page-word.php:59
+msgid "Load More"
+msgstr "さらに読み込む"
+
+#: inc/classes/Cache.php:70 inc/theme_plus.php:679
+msgid "The comment is private"
+msgstr "このコメントは非公開です"
+
+#: inc/classes/Captcha.php:128
+msgid "Bad Request."
+msgstr "要求が正しくありません。"
+
+#: inc/classes/Captcha.php:131
+msgid "Look like you forgot to enter the captcha."
+msgstr "キャプチャを入力するのを忘れたようです。"
+
+#: inc/classes/Captcha.php:134
+msgid "Captcha timeout."
+msgstr "キャプチャのタイムアウト。"
+
+#: inc/classes/Captcha.php:138
+msgid "Captcha check passed."
+msgstr "キャプチャ チェックに合格しました。"
+
+#: inc/classes/Captcha.php:141
+msgid "Captcha incorrect."
+msgstr "キャプチャが正しくありません。"
+
+#: inc/classes/Captcha.php:145
+msgid "An error has occurred."
+msgstr "エラーが発生しました。"
+
+#: inc/classes/MyAnimeList.php:70
+msgid " Watched "
+msgstr " 見て "
+
+#: inc/classes/MyAnimeList.php:70
+msgid " episodes."
+msgstr " エピソード。"
+
+#: inc/classes/MyAnimeList.php:108
+msgid "Finished "
+msgstr "終えた "
+
+#: inc/classes/MyAnimeList.php:117
+msgid "Watching "
+msgstr "ウォッチング "
+
+#: inc/classes/MyAnimeList.php:124
+msgid "Planning to Watch "
+msgstr "視聴を計画する "
+
+#: inc/classes/MyAnimeList.php:133
+msgid "Dropped "
+msgstr "削除 "
+
+#: inc/classes/MyAnimeList.php:142
+msgid "Paused "
+msgstr "一時 停止 "
+
+#: inc/template-tags.php:28
+#, php-format
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr "投稿日時: %s"
+
+#: inc/template-tags.php:33
+#, php-format
+msgctxt "post author"
+msgid "by %s"
+msgstr "%s"
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:50 inc/template-tags.php:56
+msgid ", "
+msgstr ", "
+
+#: inc/template-tags.php:52
+#, php-format
+msgid "Posted in %1$s"
+msgstr "%1$s への投稿"
+
+#: inc/template-tags.php:58
+#, php-format
+msgid "Tagged %1$s"
+msgstr "タグは %1$s"
+
+#. translators: %s: post title
+#: inc/template-tags.php:65
+#, php-format
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr "コメントを残す<span class=\"screen-reader-text\"> に %s</span>"
+
+#. translators: %s: Name of current post
+#: inc/template-tags.php:72 tpl/content-page.php:35
+#, php-format
+msgid "Edit %s"
+msgstr "%sを編集"
+
+#: inc/theme_plus.php:16
+msgid "EDIT"
+msgstr "編集"
+
+#: inc/theme_plus.php:65
+msgid " days ago"
+msgstr " 日前"
+
+#: inc/theme_plus.php:66
+msgid " hours ago"
+msgstr " 時間前"
+
+#: inc/theme_plus.php:67
+msgid " minutes ago"
+msgstr " 分前"
+
+#: inc/theme_plus.php:68
+msgid " seconds ago"
+msgstr " 秒前"
+
+#: inc/theme_plus.php:75
+msgid "Posted on "
+msgstr "投稿日時は　"
+
+#: inc/theme_plus.php:134
+msgid "Please upgrade wordpress to version 4.4+"
+msgstr "WordPressバージョン4.4以上が必要です"
+
+#: inc/theme_plus.php:241
+msgid "Login successful, "
+msgstr "ログインに成功しました。 "
+
+#: inc/theme_plus.php:242
+msgid "seconds later automatically transfer to"
+msgstr "秒後に自動的に転送"
+
+#: inc/theme_plus.php:253
+msgid "dashboard"
+msgstr "ダッシュボード"
+
+#: inc/theme_plus.php:261
+msgid "home"
+msgstr "ホーム"
+
+#: inc/theme_plus.php:273
+msgid "Change avatar"
+msgstr "アバターを変更"
+
+#: inc/theme_plus.php:274
+msgid "Hello, "
+msgstr "こんにちは、 "
+
+#: inc/theme_plus.php:278
+msgid "Home"
+msgstr "ホーム"
+
+#: inc/theme_plus.php:280
+msgid "Manage"
+msgstr "管理する"
+
+#: inc/theme_plus.php:282
+msgid "Logout"
+msgstr "ログアウト"
+
+#: inc/theme_plus.php:282
+msgid "Sign out? "
+msgstr "ログアウト? "
+
+#: inc/theme_plus.php:302 inc/theme_plus.php:363 tpl/content-single.php:31
+#: tpl/single-image.php:24
+msgid "View"
+msgid_plural "Views"
+msgstr[0] "表示"
+
+#: inc/theme_plus.php:314 inc/theme_plus.php:374
+#, php-format
+msgid "Search results for \" %s \""
+msgstr "\"%s\" の検索結果"
+
+#: inc/theme_plus.php:391 tpl/content-thumb.php:28 tpl/content-thumb.php:34
+msgid "Your browser does not support HTML5 video."
+msgstr "お使いのブラウザはHTML5ビデオをサポートしていません."
+
+#: inc/theme_plus.php:422
+msgid "Signed in as"
+msgstr "ようこそ"
+
+#: inc/theme_plus.php:428
+msgid "New post"
+msgstr "新しい記事"
+
+#: inc/theme_plus.php:430
+msgid "Profile"
+msgstr "プロフィール"
+
+#: inc/theme_plus.php:431
+msgid "Sign out"
+msgstr "ログアウト"
+
+#: inc/theme_plus.php:449
+msgid "Log in"
+msgstr "ログイン"
+
+#: index.php:26
+msgid "Notice"
+msgstr "お知らせ"
+
+#: layouts/imgbox.php:7
+msgid "Previous"
+msgstr "前へ"
+
+#: layouts/imgbox.php:39
+msgid "Next"
+msgstr "次へ"
+
+#: layouts/post-nextprev.php:12
+msgid "Previous Post"
+msgstr "前の投稿"
+
+#: layouts/post-nextprev.php:15
+msgid "Next Post"
+msgstr "次の投稿"
+
+#: page-word.php:49
+msgid "You have not posted a comment yet"
+msgstr "あなたはまだコメントを投稿していません"
+
+#: page-word.php:52
+msgid "Go and post your first comment now"
+msgstr "今すぐ最初のコメントを投稿してください"
+
+#: search.php:20
+#, php-format
+msgid "search result: %s"
+msgstr "検索結果: %s"
+
+#: tpl/content-category.php:31 tpl/content-image.php:33
+#: tpl/content-status.php:32 tpl/content-thumb.php:94 tpl/content.php:33
+msgid "NOTHING"
+msgstr "何もない"
+
+#: tpl/content-category.php:31 tpl/content-image.php:33
+#: tpl/content-status.php:32 tpl/content-thumb.php:94 tpl/content.php:33
+msgid "1 Comment"
+msgstr "1件のコメント"
+
+#: tpl/content-category.php:31 tpl/content-image.php:33
+#: tpl/content-status.php:32 tpl/content-thumb.php:94 tpl/content.php:33
+msgid "Comments"
+msgstr "コメント"
+
+#: tpl/content-category.php:31 tpl/content-image.php:33
+#: tpl/content-status.php:32 tpl/content-thumb.php:94 tpl/content.php:33
+msgid "Comment Closed"
+msgstr "コメント募集は終了しました"
+
+#: tpl/content-image.php:37 tpl/content-status.php:36 tpl/content-thumb.php:91
+#: tpl/content.php:37
+msgid "Hit"
+msgid_plural "Hits"
+msgstr[0] "ヒット"
+
+#: tpl/content-none.php:14
+msgid "There is nothing here！"
+msgstr "ここには何もありません！"
+
+#: tpl/content-none.php:21
+#, php-format
+msgid ""
+"Ready to post your first article? <a href=\"%1$s\">Click here to start</a>."
+msgstr ""
+"あなたの最初の記事を投稿する準備はできましたか? <a href=\"%1$s\">を開始するに"
+"は、ここをクリック</a>してください。"
+
+#: tpl/content-none.php:25
+msgid "Didn't find what you want, look at the other ones."
+msgstr "あなたが望むものを見つけられなかった、他のものを見てください。"
+
+#: tpl/content-none.php:43
+msgid "We didn't seem to find what you want. Maybe you can search for it."
+msgstr ""
+"私たちはあなたが望むものを見つけられなかったようです。たぶん、あなたはそれを"
+"検索することができます。"
+
+#: tpl/content-page.php:24 tpl/content-single.php:45 tpl/single-image.php:34
+msgid "Pages:"
+msgstr "ページ:"
+
+#: tpl/content-single.php:38 tpl/content-thumb.php:116
+msgid "AI Excerpt"
+msgstr "AI 概要"
+
+#: tpl/content-single.php:80 tpl/single-image.php:67
+msgid "Last updated on "
+msgstr "最終更新日 "
+
+#: tpl/content-single.php:88 tpl/single-image.php:75
+msgid "Nothing~"
+msgstr "何もない~"
+
+#: user/page-bangumi.php:31 user/page-bilibiliFavList.php:207
+#: user/page-followVideos.php:29
+msgid "Please fill in the Bilibili UID in Sakura Options."
+msgstr "さくらオプションでビリビリのUIDを記入してください。"
+
+#: user/page-bangumi.php:43
+msgid "Please fill in the My Anime List Username in Sakura Options."
+msgstr "さくらオプションにマイアニメリストのユーザー名を入力してください。"
+
+#: user/page-login.php:18
+msgid "Remember_Me"
+msgstr "Remember_Me"
+
+#: user/page-register.php:14 user/page-register.php:16
+#: user/page-register.php:19 user/page-register.php:24
+#: user/page-register.php:26 user/page-register.php:29
+#: user/page-register.php:34 user/page-register.php:36
+#: user/page-register.php:43
+msgid "Error"
+msgstr "エラー"
+
+#: user/page-register.php:14
+msgid "Please enter username."
+msgstr "ユーザー名をご入力ください。"
+
+#: user/page-register.php:16
+msgid "Invalid characters, please enter a valid username."
+msgstr "使用不可文字が含んでいます、有効なユーザー名を入力してください。"
+
+#: user/page-register.php:19
+msgid "This username has been registered."
+msgstr "このユーザー名は登録されています。"
+
+#: user/page-register.php:24
+msgid "Please enter email address."
+msgstr "メールアドレスを入力してください。"
+
+#: user/page-register.php:26
+msgid "Invalid email address."
+msgstr "無効なメールアドレス。"
+
+#: user/page-register.php:29
+msgid "This email address has been registered."
+msgstr "このメールアドレスは登録されています。"
+
+#: user/page-register.php:34
+msgid "Password length is at least 6 digits."
+msgstr "パスワードの長さは 6 桁以上です。"
+
+#: user/page-register.php:36
+msgid "Inconsistent password entered twice."
+msgstr "パスワードが 2 回入力されました。"
+
+#: user/page-register.php:43
+msgid "Unable to complete registration request...Please contact"
+msgstr "登録要求を完了できません。お問い合わせください"
+
+#: user/page-register.php:43
+msgid "administrator"
+msgstr "管理者"
+
+#: user/page-register.php:64
+msgid "User Name"
+msgstr "ユーザー名"
+
+#: user/page-register.php:65
+msgid "Email Address"
+msgstr "メールアドレス"
+
+#: user/page-register.php:66
+msgid "Password"
+msgstr "パスワード"
+
+#: user/page-register.php:67
+msgid "Confirm your password"
+msgstr "パスワードを確認してください"
+
+#: user/page-register.php:70
+msgid "Sign up"
+msgstr "サインアップ"
+
+#: user/page-register.php:77
+msgid "Success! Redirecting......"
+msgstr "成功！リダイレクト中......"
+
+#: user/page-register.php:82
+msgid "Registration is not open yet."
+msgstr "登録はまだ開かれていない。"
+
+#. Theme Name of the plugin/theme
+msgid "Sakurairo"
+msgstr "桜いろ"
+
+#. Theme URI of the plugin/theme
+msgid "https://github.com/mirai-mamori/Sakurairo"
+msgstr "https://github.com/mirai-mamori/Sakurairo"
+
+#. Description of the plugin/theme
+msgid ""
+"A colorful, Easy-to-use, Perfect Experience, and Powerful Customizable "
+"WordPress Theme (Based on Theme Sakura)"
+msgstr ""
+"デザインが多彩、操作が簡単、体験が完璧、カスタマイズ性が高いのWordPressテーマ"
+"です(Based on Theme Sakura)"
+
+#. Author of the plugin/theme
+msgid "Created by Fuukei"
+msgstr "Created by Fuukei"
+
+#. Author URI of the plugin/theme
+msgid "https://fuukei.org/"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "文章模版"
+msgstr "文章模版"
+
+#. Template Name of the plugin/theme
+msgid "友情链接模版"
+msgstr "友情链接模版"
+
+#. Template Name of the plugin/theme
+msgid "说说模版"
+msgstr "说说模版"
