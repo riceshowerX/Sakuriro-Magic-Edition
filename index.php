@@ -1,26 +1,15 @@
 <?php
-/**
- * The main template file.
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package Akina
- */
 get_header();
 ?>
 
-<?php if (iro_opt('bulletin_board') == '1') {
-    $text = iro_opt('bulletin_text');
-    ?>
+<?php
+$text = iro_opt('bulletin_board') == '1' ? iro_opt('bulletin_text') : '';
+if ($text) {
+?>
     <div class="notice" style="margin-top:60px">
-        <?php if (iro_opt('bulletin_board_icon', 'true')) : ?>
-            <div class="notice-icon"><?php _e('Notice', 'sakurairo') ?></div>
-        <?php endif; ?>
+        <?php
+        iro_opt('bulletin_board_icon', 'true') && print('<div class="notice-icon">' . __('Notice','sakurairo') . '</div>');
+        ?>
         <?php if (strlen($text) > 142) { ?>
             <marquee align="middle" behavior="scroll" loop="-1" scrollamount="6" style="margin: 0 8px 0 20px; display: block;" onMouseOut="this.start()" onMouseOver="this.stop()">
                 <div class="notice-content"><?php echo $text; ?></div>
@@ -32,13 +21,13 @@ get_header();
 <?php } ?>
 
 <?php
-if (iro_opt('exhibition_area') == '1') {
-    if (iro_opt('exhibition_area_style') == 'left_and_right') {
-        get_template_part('layouts/feature_v2');
-    } else {
-        get_template_part('layouts/feature');
-    }
-}
+$exhibition_area = iro_opt('exhibition_area');
+$exhibition_area_style = iro_opt('exhibition_area_style');
+array_key_exists('exhibition_area', $exhibition_area) && $exhibition_area == '1' && (
+    array_key_exists('exhibition_area_style', $exhibition_area_style) && $exhibition_area_style == 'left_and_right'
+        ? get_template_part('layouts/feature_v2')
+        : get_template_part('layouts/feature')
+);
 ?>
 
 <div id="primary" class="content-area">
@@ -52,19 +41,21 @@ if (iro_opt('exhibition_area') == '1') {
                 </header>
             <?php
             endif;
-            while (have_posts()) : the_post();
-                if (iro_opt('post_list_style') == 'akinastyle') {
+            /* Start the Loop */
+            if (iro_opt('post_list_style') == 'akinastyle') {
+                while (have_posts()) : the_post();
                     get_template_part('tpl/content', get_post_format());
-                } else {
-                    get_template_part('tpl/content', 'thumb');
-                }
-            endwhile;
-        else :
-            get_template_part('tpl/content', 'none');
-        endif;
-        ?>
+                endwhile;
+            } else {
+                get_template_part('tpl/content', 'thumb');
+            }
+            ?>
+        <?php else : get_template_part('tpl/content', 'none');
+        endif; ?>
     </main><!-- #main -->
-    <?php if (iro_opt('pagenav_style') == 'ajax') { ?>
+    <?php
+    if (in_array(iro_opt('pagenav_style'), array('ajax'))) {
+        ?>
         <div id="pagination"><?php next_posts_link(__(' Previous', 'sakurairo')); ?></div>
         <div id="add_post"><span id="add_post_time" style="visibility: hidden;" title="<?php echo iro_opt('page_auto_load', ''); ?>"></span></div>
     <?php } else { ?>
@@ -75,3 +66,5 @@ if (iro_opt('exhibition_area') == '1') {
 </div><!-- #primary -->
 <?php
 get_footer();
+?>
+

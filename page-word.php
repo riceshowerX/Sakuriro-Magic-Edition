@@ -1,11 +1,12 @@
 <?php
+ 
 /**
  * Template Name: 说说模版
  */
-
+ 
 get_header();
 ?>
-
+ 
 <div id="primary" class="content-area">
     <main class="site-main" role="main">
     <?php
@@ -20,7 +21,7 @@ get_header();
         $shuoshuo_query = new WP_Query($args);
     ?>
 	<div class="entry-content">
-		<?php the_content(); ?>
+		<?php the_content( '', true ); ?>
 	</div>			
     <div class="cbp_shuoshuo">
         <?php if ($shuoshuo_query->have_posts()) : ?>
@@ -29,14 +30,14 @@ get_header();
                     <li id="shuoshuo_post">
                         <a href="<?php the_permalink(); ?>">
                             <span class="shuoshuo_author_img">
-                                <?php echo get_avatar(get_the_author_meta('ID'), 48); ?>
+                                <img src="<?php echo get_avatar_profile_url(get_the_author_meta('ID')); ?>" class="avatar avatar-48" width="48" height="48">
                             </span>
                             <div class="cbp_tmlabel">
-                                <div class="entry-content">
-                                    <?php the_content(); ?>
-                                </div>
+                                <object class="entry-content">
+                                    <?php the_content( '', true ); ?>
+                                </object>
                                 <p class="shuoshuo_meta">
-                                    <i class="fa-regular fa-clock"></i> <?php the_time('Y/n/j g:i a'); ?>
+                                    <i class="fa-regular fa-clock"></i> <?php the_time('Y/n/j G:i'); ?>
                                     <span class="comments-number"><i class="fa-regular fa-comments"></i> <?php comments_number('0', '1', '%'); ?></span>
                                 </p>
                             </div>

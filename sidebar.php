@@ -6,6 +6,9 @@
  *
  * @package Akina
  */
+
+//disable get_sidebar()
+return;
 ?>
 
 <aside id="iro-widget" class="widget-area" role="complementary">
