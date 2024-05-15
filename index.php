@@ -12,7 +12,7 @@ if ($text) {
 // 显示展示区域
 $exhibition_area = iro_opt('exhibition_area');
 $exhibition_area_style = iro_opt('exhibition_area_style');
-if ($exhibition_area['exhibition_area'] == '1' && isset($exhibition_area_style['exhibition_area_style'])) {
+if (isset($exhibition_area['exhibition_area']) && $exhibition_area['exhibition_area'] == '1' && isset($exhibition_area_style['exhibition_area_style'])) {
     get_template_part('layouts/' . ($exhibition_area_style['exhibition_area_style'] == 'left_and_right' ? 'feature_v2' : 'feature'));
 }
 
