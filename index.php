@@ -1,33 +1,21 @@
 <?php
 get_header();
-?>
 
-<?php
+// 显示公告板
 $text = iro_opt('bulletin_board') == '1' ? iro_opt('bulletin_text') : '';
 if ($text) {
-?>
-    <div class="notice" style="margin-top:60px">
-        <?php
-        iro_opt('bulletin_board_icon', 'true') && print('<div class="notice-icon">' . __('Notice','sakurairo') . '</div>');
-        ?>
-        <?php if (strlen($text) > 142) { ?>
-            <marquee align="middle" behavior="scroll" loop="-1" scrollamount="6" style="margin: 0 8px 0 20px; display: block;" onMouseOut="this.start()" onMouseOver="this.stop()">
-                <div class="notice-content"><?php echo $text; ?></div>
-            </marquee>
-        <?php } else { ?>
-            <div class="notice-content"><?php echo $text; ?></div>
-        <?php } ?>
-    </div>
-<?php } ?>
+    $bulletin_icon = iro_opt('bulletin_board_icon', 'true') ? '<div class="notice-icon">' . __('Notice','sakurairo') . '</div>' : '';
+    $notice_content = '<div class="notice-content">' . $text . '</div>';
+    echo '<div class="notice" style="margin-top:60px;">' . $bulletin_icon . $notice_content . '</div>';
+}
 
-<?php
+// 显示展示区域
 $exhibition_area = iro_opt('exhibition_area');
 $exhibition_area_style = iro_opt('exhibition_area_style');
-array_key_exists('exhibition_area', $exhibition_area) && $exhibition_area == '1' && (
-    array_key_exists('exhibition_area_style', $exhibition_area_style) && $exhibition_area_style == 'left_and_right'
-        ? get_template_part('layouts/feature_v2')
-        : get_template_part('layouts/feature')
-);
+if ($exhibition_area['exhibition_area'] == '1' && isset($exhibition_area_style['exhibition_area_style'])) {
+    get_template_part('layouts/' . ($exhibition_area_style['exhibition_area_style'] == 'left_and_right' ? 'feature_v2' : 'feature'));
+}
+
 ?>
 
 <div id="primary" class="content-area">
@@ -39,9 +27,8 @@ array_key_exists('exhibition_area', $exhibition_area) && $exhibition_area == '1'
                 <header>
                     <h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
                 </header>
-            <?php
-            endif;
-            /* Start the Loop */
+            <?php endif;
+            /* 开始循环 */
             if (iro_opt('post_list_style') == 'akinastyle') {
                 while (have_posts()) : the_post();
                     get_template_part('tpl/content', get_post_format());
@@ -49,8 +36,8 @@ array_key_exists('exhibition_area', $exhibition_area) && $exhibition_area == '1'
             } else {
                 get_template_part('tpl/content', 'thumb');
             }
-            ?>
-        <?php else : get_template_part('tpl/content', 'none');
+        else :
+            get_template_part('tpl/content', 'none');
         endif; ?>
     </main><!-- #main -->
     <?php
@@ -64,7 +51,5 @@ array_key_exists('exhibition_area', $exhibition_area) && $exhibition_area == '1'
         </nav>
     <?php } ?>
 </div><!-- #primary -->
-<?php
-get_footer();
-?>
 
+<?php get_footer(); ?>
