@@ -13,6 +13,39 @@ define('IRO_VERSION', wp_get_theme()->get('Version'));
 define('INT_VERSION', '18.3.1');
 define('BUILD_VERSION', '2');
 
+function my_theme_scripts() {
+  wp_enqueue_script( 'jquery' ); 
+}
+add_action( 'wp_enqueue_scripts', 'my_theme_scripts' );
+
+add_action( 'wp_ajax_ajax_login', 'my_ajax_login' );
+add_action( 'wp_ajax_nopriv_ajax_login', 'my_ajax_login' );
+
+function my_ajax_login() {
+  check_ajax_referer( 'ajax-login-nonce', 'login-nonce' ); // 验证 nonce
+
+  $username = sanitize_user($_POST['log']);
+  $password = $_POST['pwd'];
+  $remember = isset($_POST['rememberme']) ? true : false;
+
+  // 执行登录操作
+  $user = wp_signon( array(
+    'user_login' => $username,
+    'user_password' => $password,
+    'remember' => $remember,
+  ), false );
+
+  if ( is_wp_error( $user ) ) {
+    // 登录失败，返回错误信息
+    wp_send_json_error( $user->get_error_message() );
+  } else {
+    // 登录成功，返回成功信息
+    wp_send_json_success();
+  }
+
+  wp_die(); // 结束 AJAX 请求
+}
+
 function check_php_version($preset_version) {
     $current_version = phpversion();
     return version_compare($current_version, $preset_version, '>=') ? true : false;
