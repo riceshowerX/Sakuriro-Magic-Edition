@@ -8,14 +8,24 @@
  * @package Sakura
  */
 
-// 获取用户设置的接待背景
+// 缓存配置值
 $reception_background = iro_opt('reception_background');
-
-// 缓存iro_opt('footer_info', '')的值
 $footer_info = iro_opt('footer_info', '');
+$load_nextpage_svg = iro_opt('load_nextpage_svg');
+$footer_load_occupancy = iro_opt('footer_load_occupancy', 'true');
+$footer_upyun = iro_opt('footer_upyun', 'true');
+$personal_avatar = iro_opt('personal_avatar');
+$iro_logo = iro_opt('iro_logo');
+$vision_resource_basepath = iro_opt('vision_resource_basepath', 'https://s.nmxc.ltd/sakurairo_vision/@2.6/');
+$ava = $personal_avatar ? $personal_avatar : ($iro_logo ?: $vision_resource_basepath . 'series/avatar.webp');
+$live_search = iro_opt('live_search');
+$sakura_widget = iro_opt('sakura_widget');
+$widget_shuo = iro_opt('widget_shuo', 'true');
+$widget_daynight = iro_opt('widget_daynight', 'true');
+$footer_debug = iro_opt('footer_debug', 'true');
 
 // 构建加载下一部分圈圈的HTML
-$load_nextpage_svg = '<img alt="loading_svg" src="' . iro_opt('load_nextpage_svg') . '">';
+$load_nextpage_svg_html = '<img alt="loading_svg" src="' . $load_nextpage_svg . '">';
 
 ?>
 	</div><!-- #content -->
@@ -27,7 +37,7 @@ $load_nextpage_svg = '<img alt="loading_svg" src="' . iro_opt('load_nextpage_svg
 		<div class="site-info" theme-info="Sakurairo v<?php echo IRO_VERSION; ?>">
 			<div class="footertext">
 				<div class="img-preload">
-					<?php echo $load_nextpage_svg; ?>
+					<?php echo $load_nextpage_svg_html; ?>
 				</div>
 				<div class="sakura-icon" style="width:max-content;height:max-content;margin: auto;">
 					<svg width="30px" height="30px" t="1682340134496" class="sakura-svg" viewBox="0 0 1049 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5240">
@@ -41,18 +51,18 @@ $load_nextpage_svg = '<img alt="loading_svg" src="' . iro_opt('load_nextpage_svg
 				<p style="color: #666666;"><?php echo $footer_info; ?></p>
 			</div>
 			<div class="footer-device function_area">
-				<?php if(iro_opt('footer_yiyan')){ ?>
+				<?php if(iro_opt('footer_yiyan')): ?>
 					<p id="footer_yiyan"></p>
-				<?php } ?>
+				<?php endif; ?>
 				<span style="color: #b9b9b9;">
 					<?php /* 能保留下面两个链接吗？算是我一个小小的心愿吧~ */ ?>
-					<?php if (iro_opt('footer_load_occupancy', 'true')): ?>
+					<?php if ($footer_load_occupancy): ?>
 						<?php printf(
 							_x( 'Load Time %.3f seconds | %d Query | RAM Usage %.2f MB ', 'footer load occupancy', 'sakurairo' ),
 							timer_stop( 0, 3 ),get_num_queries(),memory_get_peak_usage() / 1024 / 1024);
 						?>
 					<?php endif; ?>
-					<?php if (iro_opt('footer_upyun', 'true')): ?>
+					<?php if ($footer_upyun): ?>
 						本网站由 <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank"> <img alt="upyun-logo" src="https://s.nmxc.ltd/sakurairo_vision/@2.6/options/upyun_logo.webp"  style="display:inline-block;vertical-align:middle;width:60px;height:30px;"/> 提供 CDN 加速 / 云存储 服务
 					<?php endif; ?>
 					<br>
@@ -65,11 +75,6 @@ $load_nextpage_svg = '<img alt="loading_svg" src="' . iro_opt('load_nextpage_svg
 	<!-- m-nav-center -->
 	<div id="mo-nav">
 		<div class="m-avatar">
-			<?php 
-			$personal_avatar = iro_opt('personal_avatar');
-			$iro_logo = iro_opt('iro_logo');
-			$ava = iro_opt('personal_avatar') ? $personal_avatar : ($iro_logo ?: iro_opt('vision_resource_basepath','https://s.nmxc.ltd/sakurairo_vision/@2.6/').'series/avatar.webp');
-			?>
 			<img alt="m-avatar" src="<?php echo $ava ?>">
 		</div>
 		<div class="m-search">
@@ -84,7 +89,7 @@ $load_nextpage_svg = '<img alt="loading_svg" src="' . iro_opt('load_nextpage_svg
 	<!-- search start -->
 	<form class="js-search search-form search-form--modal" method="get" action="<?php echo home_url(); ?>" role="search">
 		<div class="search-form__inner">
-		<?php if(iro_opt('live_search')){ ?>
+		<?php if($live_search): ?>
 			<div class="micro">
 				<input id="search-input" class="text-input" type="search" name="s" placeholder="<?php _e('Want to find something?', 'sakurairo') /*想要找点什么呢*/?>" required>
 			</div>
@@ -92,26 +97,26 @@ $load_nextpage_svg = '<img alt="loading_svg" src="' . iro_opt('load_nextpage_svg
 				<a id="Ty" href="#"></a>
 				<div class="ins-section-container" id="PostlistBox"></div>
 			</div>
-		<?php }else{ ?>
+		<?php else: ?>
 			<div class="micro">
 				<p class="micro mb-"><?php _e('Want to find something?', 'sakurairo') /*想要找点什么呢*/?></p>
 				<input class="text-input" type="search" name="s" placeholder="<?php _e('Search', 'sakurairo') ?>" required>
 			</div>
-		<?php } ?>
+		<?php endif; ?>
 		</div>
 		<div class="search_close"></div>
 	</form>
 	<!-- search end -->
 	<?php wp_footer(); ?>
 	<div class="skin-menu no-select">
-		<?php if (iro_opt('sakura_widget')) : ?>
+		<?php if ($sakura_widget) : ?>
 			<aside id="iro-widget" class="widget-area" role="complementary">
 				<div class="sakura_widget">
 					<?php if (function_exists('dynamic_sidebar') && dynamic_sidebar('sakura_widget')) : endif; ?>
 				</div>
 			</aside>
 		<?php endif; ?>
-		<?php if (iro_opt('widget_shuo', 'true')) : ?>    
+		<?php if ($widget_shuo) : ?>    
 			<?php
 				$args = array(
 						'post_type' => 'shuoshuo',
@@ -129,7 +134,7 @@ $load_nextpage_svg = '<img alt="loading_svg" src="' . iro_opt('load_nextpage_svg
 				<?php wp_reset_postdata(); ?>
 		<?php endif; ?>  
 		<div class="theme-controls row-container">
-			<?php if (iro_opt('widget_daynight', 'true')): ?>
+			<?php if ($widget_daynight): ?>
 				<ul class="menu-list">
 					<li id="white-bg" title="<?=__('Light Mode','sakurairo');?>" >
 						<i class="fa-solid fa-display fa-sm"></i>
@@ -159,7 +164,7 @@ $load_nextpage_svg = '<img alt="loading_svg" src="' . iro_opt('load_nextpage_svg
 			<?php endif; ?>
 		</div>
 	</div>
-	<?php if (iro_opt('footer_debug', 'true')) { ?>
+	<?php if ($footer_debug) : ?>
 		<div id="debug">
 			<ul>
 				<li><?php printf(_x('加载时间 %.3f 秒', '底部负载情况', 'sakurairo'), timer_stop(0, 3)); ?></li>
@@ -167,6 +172,6 @@ $load_nextpage_svg = '<img alt="loading_svg" src="' . iro_opt('load_nextpage_svg
 				<li><?php printf(_x('RAM 使用量 %.2f MB', '底部负载情况', 'sakurairo'), memory_get_peak_usage() / 1024 / 1024); ?></li>
 			</ul>
 		</div>
-	<?php } ?>
+	<?php endif; ?>
 </body>
 </html>
