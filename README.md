@@ -1,6 +1,6 @@
 ### Sakurairo 自用魔改版说明
 
-- 本文档描述了对 Sakurairo 主题进行二次创作的相关信息。
+- 本文档描述了对 Sakurairo 主题进行二次创作的相关信息，由于是自用魔改所以不保证可用性只提供优化思路。
 - 魔改内容详情见：[wiki](https://github.com/riceshowerX/Sakuriro-Magic-Edition/wiki)
 - [演示站点](https://miksz.xyz)
 
