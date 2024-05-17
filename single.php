@@ -7,28 +7,51 @@
  * @package Akina
  */
 
-get_header(); ?>
+get_header(); 
+?>
 
 <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
 
-        <?php
-        while (have_posts()) :
-            the_post();
-            // Display single post content
-            get_template_part('tpl/content', 'single');
+    <?php
+    // 定义查询参数，开启缓存
+    $args = array(
+        'post_type' => 'post', 
+        'posts_per_page' => 1, 
+        'cache_results' => true, 
+        'no_found_rows' => true 
+    );
 
-        endwhile; // End of the loop.
-        ?>
+    // 使用 WP_Query 对象进行查询
+    $query = new WP_Query($args);
+
+    // 检查是否有博文
+    if ($query->have_posts()) : 
+
+        // 循环遍历博文
+        while ($query->have_posts()) : $query->the_post(); 
+            // 加载博文内容模板
+            get_template_part('tpl/content', 'single'); 
+        endwhile;
+
+        // 加载侧边栏模板
+        get_template_part('layouts/sidebox');
+
+        // 加载上一篇/下一篇链接模板
+        get_template_part('layouts/post','nextprev'); 
+
+    else:
+        // 加载没有博文时的模板
+        get_template_part('template-parts/content', 'none');
+    endif;
+
+    // 重置数据
+    wp_reset_postdata(); 
+    ?>
 
     </main><!-- #main -->
 </div><!-- #primary -->
 
 <?php
-// Include sidebar
-get_sidebar();
-
-// Include next/previous post links
-get_template_part('layouts/post', 'nextprev');
-
-get_footer();
+get_footer(); 
+?>
